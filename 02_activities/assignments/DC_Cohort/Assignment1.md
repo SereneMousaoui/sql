@@ -209,5 +209,5 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+After much thought, I have figured that my life as a PhD student is heavily shaped by 'output-based' value systems, with things like papers published, citations, grant awards, presentations (and the list goes on) as things that are measured. My value is based on my research output. As a PhD student I am expected to contribute to new knowledge in these ways and this is a direct measure of success. 
 ```
