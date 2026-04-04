@@ -56,7 +56,7 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 and 2 slowly changing dimensions are modeling techniques used to manage how changes in 'descriptive dimension data' are tracked over time. Type 1 method overwrites the existing value with the new value and Type 2 method adds a new row for the new value and maintains the history of the exisiting row. Using the Type 1 method, the CUSTOMER_ADDRESS table would only store the customer's current address. Using the Type 2 method, to retain changes, the CUSTOMER_ADDRESS table would need to keep a history of addresses by adding a new row whenever the customer's address changes. I imagine the primary keys between the two types would change, where 'customer_id' would serve as the primary key in the Type 1 model and something like 'customer_address_id' would serve as the primary key in the Type 2 model. 
 ```
 
 ***
