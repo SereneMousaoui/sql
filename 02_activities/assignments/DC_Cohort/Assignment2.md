@@ -191,5 +191,5 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+The overarching idea here is that AI systems are not 'independent' intelligence and that AI output is shaped by human input. Therein lies the problem - human biases, assumptions and limitations are embedded in the output since patters are learned from human-provided data. This is particularly concerning considering LLMs are becoming common and built into many things in day-to-day life - appearing to be objective, when they are not. More content becomes available to the masses, and it becomes harder to verify what is truth - providing convincing, but sometimes wrong, information. I myself have asked ChatGPT questions before, to which I received a flawed yet articulate response. To most people these days, news is delivered via social media, like X (twitter) or instagram. These platforms are filled with huge amounts of AI-generated text that can drown out authentic human voices - which make it much harder to identify authentic information. Another accompanying concern is the current reliance on AI - as people trust AI answers without questioning it, impacting behaviour and decisions. And, another concern is the drift towards the homogenization of culture as a result, since LLMs reflect dominant cultural norms - inevitably erasing minority values. 
 ```
