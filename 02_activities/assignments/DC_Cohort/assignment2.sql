@@ -291,30 +291,38 @@ Finally, make sure you have a WHERE statement to update the right row,
 When you have all of these components, you can run the update statement. */
 --QUERY 12
 
--- THIS one was very very hard and I had to get some help to tackle it and put notes from class together. Since it was particularly difficult, I am going to imbed it with explanations.
+
+-- THIS one was very  hard and I had to get some help to tackle it and put notes from class together. Since it was particularly difficult, I am going to imbed it with explanations.
+
 ALTER TABLE product_units
-ADD current_quantity INT;
+ADD current_quantity INT; -- at this pount, the new column will be NULLs for all rows
+
+--HERE we fill that column!
 
 UPDATE product_units
-SET current_quantity = COALESCE
+SET current_quantity = COALESCE -- coalesce allows us to fill in zeros here we find NULLs
+-- start with the most inner part and work your way out (I have labelled them alphabetically for explanations)
 (
 		(
-				SELECT quantity
+				SELECT quantity --(C) return the quantity from that newest matching row
 				FROM
 				(
-						SELECT
+						SELECT -- (A) INNER QUERY: reading from vendor_inventory, we are selecting product_id and quantity
 						product_id
 						, quantity
-						, ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY market_date DESC) AS row_num 
+						, ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY market_date DESC) AS row_num  -- within each product, sorting rows from newest to oldest and numbering them
 						FROM vendor_inventory
 				)x
 				
+				-- (B) ONLY look at rows produced by the inner query (A) where product_id matches the current row in product_units, and keep only the newest one.
 				WHERE x.product_id = product_units.product_id
 				AND row_num = 1
 		)
-		, 0
+		, 0 -- (D) if the subquery returns NULL, it will use 0 instead
 )
-WHERE product_units.product_id IS NOT NULL;
+
+-- In summary here, for each row in product_units,  here, we look at the product_id and then go to vendor_inventory and find all the rows for that respective product.
+-- Then we sort them from newest to oldest and label the newest row as 1, and only keep that one. We then take its quantity and put it into current_quantity, and if no matching row exists, we put 0.
 
 --END QUERY
 
