@@ -56,7 +56,15 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 and 2 slowly changing dimensions are modeling techniques used to manage how changes in 'descriptive dimension data' are tracked over time. Briefly, in this case, the Type 1 method overwrites the existing value with the new value and the Type 2 method adds a new row for the new value and maintains the history of the exisiting row. 
+
+Using the Type 1 method, the CUSTOMER_ADDRESS table would only store the customer's current address, to do this, we would simply UPDATE the row information by using an UPDATE query. 
+
+Using the Type 2 method, to retain changes, the CUSTOMER_ADDRESS table would need to keep a history of addresses by adding a new row whenever the customer's address changes. In this case, this will be achieved using the INSERT query, with the new values.
+
+I imagine the primary keys between the two types would be different, where 'customer_id' would serve as the primary key in the Type 1 model and 'customer_address_id' would serve as the primary key in the Type 2 model. For this reason, in the Type 1 model, the UPDATE query will need to set a constraint_expression like: WHERE customer_id = some number. 
+
+
 ```
 
 ***
@@ -191,5 +199,9 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+The overarching idea here is that AI systems are not 'independent' intelligence and that AI output is shaped by human input. Therein lies the problem - human biases, assumptions and limitations are embedded in the output since patterns are learned from human-provided data. This is particularly concerning considering LLMs are becoming common and built into many things in day-to-day life - appearing to be objective, when they are not. As more content becomes available to the masses, it becomes harder to verify what is truth because LLMs provide convincing, but sometimes wrong, information, once again, appearing to be objective. I myself have asked ChatGPT questions before, to which I received a flawed yet articulate response. 
+
+To most people these days, news is delivered via social media, like X (twitter) or instagram. These platforms are filled with huge amounts of AI-generated text that clearly drown out true human voices, making it increasingly difficult to identify authentic information. Another accompanying concern is the current reliance on AI, as many may trust AI answers without question, this imposes a real impact on their decision-making and behavior. Importantly, with all this, there is a tremendous lack of transparency, as the way decisions are made (by AI) are left unclear since users of AI don't know how outputs are generated. And when wrong information is shared, or biased decisions are made, determining who is responsible is not possible. The ethical concern with this is the lack of accountability.
+
+Another ethical concern that arises from the preceived 'objective nature' of AI is the homogenization of culture. Since LLMs reflect dominant cultural norms - specifically of those initially feeding into it - underrepresented values are inevitably erased. As the article mentioned, AI systems don't just generate the ideas from nothing, they rely on human workers, which according to the article and other sources I have consulted, are often unethically sourced themselves.
 ```
